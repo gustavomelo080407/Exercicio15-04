@@ -20,12 +20,17 @@
         <h2>Array e For</h2>
         <input type="text" id="nomeLista" placeholder="Adicionar nome à lista">
         <button id="btAdicionarNome">Adicionar</button>
+        <button id="btRemoverUmItem">Remover</button>
+        <button id="btLimparLista">Limpar</button>
         <ul id="listaNomes"></ul>
     </section>
 
     <script>
         // Eventos de "escuta"
         document.getElementById('btAdicionarNome').addEventListener('click', adicionarNome);
+        document.getElementById('btRemoverUmItem').addEventListener('click', removerUltimoNome);
+        document.getElementById('btLimparLista').addEventListener('click', limparLista);
+
         let nomes = []; //Lista vazia
 
         function adicionarNome(){
@@ -39,6 +44,25 @@
             }
 
         }
+
+        function removerUltimoNome() {
+            if (nomes.length > 0) {
+                nomes.pop(); // Remove o último nome da lista
+                atualizarNomes();
+            } else {
+                alert("A lista já está vazia!");
+            }
+        }
+
+        function limparLista() {
+            if (nomes.length > 0) {
+                nomes = []; // Esvazia o array
+                atualizarNomes();
+            } else {
+                alert("A lista já está vazia!");
+            }
+        }
+
 
         function atualizarNomes(){
             let ul = document.getElementById('listaNomes');
